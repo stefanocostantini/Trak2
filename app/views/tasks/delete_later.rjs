@@ -1,0 +1,4 @@
+page.replace_html 'tasks_later_list', :partial => '/tasks/tasklater/', :collection => @tasks_later
+page.replace_html "task_later_counter", @tasks_later.size
+
+page.visual_effect :pulsate, 'task_later_counter'

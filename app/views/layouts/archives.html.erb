@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Trak</title>
+  <%= stylesheet_link_tag 'style', 'colorPicker' %>
+  <%= javascript_include_tag :all, :cache => 'true' %>
+  <script src="jquery.min.js" type="text/javascript"><!--mce:0--></script>
+  <script src="jquery.colorPicker.js" type="text/javascript"><!--mce:1--></script>
+  
+  <script type="text/javascript">
+  
+  jQuery.noConflict();
+  
+  </script>	
+
+</head>
+
+<body>
+
+<div id="heading">
+
+	<div id="logo">
+		<%= image_tag 'trak.png', :size => '80x30' %>
+	</div>
+	
+	<div id="firefox_fix"></div>
+	
+	<div id="spinner">
+		<% if logged_in? %>
+		<%= image_tag 'ajax-loader.gif', :size => '25x25' %>
+		<% else %>
+		<% end %>
+	</div>
+	
+	<div id="switch">
+		<span id="tasks_switch_off"><%= link_to 'Tasks', :controller => 'tasks' %></span>
+		<span id="projects_switch_off"><%= link_to 'Projects', :controller => 'projects' %></span>
+		<span id="archives_switch_on">Archives</span>
+	</div>
+	
+	
+</div>
+
+<div id="content_history">
+
+		<div id="history_area">
+			<%= yield  %>
+		</div>
+		
+</div>
+
+<div id="toolbar">
+
+	<div id="stats">
+		All tasks archived: <span id="archives_counter"><%=@archives.size%></span>
+	</div>
+
+	<div id="login_logout">
+		<% if logged_in? %>
+			Logged in as: <b><%= current_user.login %> </b> | <%= link_to 'Logout', logout_path %>
+		<% else %>
+			No user currently logged in
+		<% end %>
+	</div>
+
+</div>
+
+</body>
+</html>

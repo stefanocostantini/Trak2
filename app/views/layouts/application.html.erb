@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Trak</title>
+  <%= stylesheet_link_tag 'style' %>
+  <%= javascript_include_tag :all, :cache => 'true' %>
+  <script src="jquery.min.js" type="text/javascript"><!--mce:0--></script>
+  <script src="jquery.colorPicker.js" type="text/javascript"><!--mce:1--></script>
+  
+  <script type="text/javascript">
+   jQuery.noConflict();
+  </script>
+
+</head>
+
+<body>
+
+<div id="heading">
+
+	<div id="logo">
+		<%= image_tag 'trak.png', :size => '80x30' %>
+	</div>
+	
+	<div id="firefox_fix"></div>
+	
+	<div id="spinner">
+		<% if logged_in? %>
+		<%= image_tag 'ajax-loader.gif', :size => '25x25' %>
+		<% else %>
+		<% end %>
+	</div>
+	
+	<div id="switch">
+		<% if logged_in? %>
+		<span id="tasks_switch_on">Tasks</span>
+		<span id="projects_switch_off"><%= link_to 'Projects', :controller => 'projects'%></span>
+		<span id="archives_switch_off"><%= link_to 'Archives', :controller => 'archives'%></span>
+		<% else %>
+		<% end %>
+	</div>
+	
+	<div id="open_close_toggle">
+		<% if logged_in? %>
+		<%= link_to_function image_tag('plus.png', :size => '40x30', :border => 'none'), update_page{ |page| page.visual_effect :toggle_blind, 'new_task', :duration => '0.3'} %>
+	
+		<% else %>
+		<% end %>
+	</div>
+		
+</div>
+	
+
+	<div id="content">
+	
+		<div id="new_task" style="display:none;">
+	<% if logged_in? %>
+	<% remote_form_for(:task, :url => {:controller => 'tasks', :action => 'create'}, :html => {:id => 'new_form'}, :loading => "Element.hide('firefox_fix')", :wait => '1.0', :complete => "Element.show('firefox_fix')") do |f| %>
+		
+  		<span id="new_task_name">
+    		<%= f.text_field :name, :class => 'task_new_name', :value => '' %>
+  		</span>
+  		
+  		  <p>
+    		<%= f.collection_select :project_id, @projects, :id, :name %>
+  		  </p>
+  		  
+  		  <p>
+   			 <%= f.submit "Create" %>
+  		  </p>
+  		  
+  		  <span id="task_close"><%= link_to_function 'Done', update_page{ |page| page.visual_effect :toggle_blind, 'new_task', :duration => '0.3'} %></span>
+  		
+	<% end %>
+	
+	<% else %>
+	<% end %>
+
+	</div>
+	
+		<div id="tasks_area">
+			<%= yield  %>
+		</div>
+		
+	</div>
+
+
+<div id="toolbar">
+
+	<div id="stats">
+		<% if logged_in? %>
+		Now: <b><span id="task_now_counter"><%= @tasks_now.size %></span> </b> | Later: <b><span id="task_later_counter"><%= @tasks_later.size %></span></b>
+		<% else %>
+		<% end %>
+		
+	</div>
+
+	<div id="login_logout">
+		<% if logged_in? %>
+			Logged in as: <b><%= current_user.login %> </b> | <%= link_to 'Logout', logout_path %>
+		<% else %>
+			No user currently logged in
+		<% end %>
+	</div>
+
+</div>
+
+
+</body>
+</html>

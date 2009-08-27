@@ -1,0 +1,3 @@
+page.replace_html 'tasks_now_list', :partial => '/tasks/tasknow/', :collection => @tasks_now
+page.replace_html 'tasks_later_list', :partial => '/tasks/tasklater/', :collection => @tasks_later
+

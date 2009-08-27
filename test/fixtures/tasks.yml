@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  completeness: 1.5
+  now: false
+  later: false
+  archived: false
+  user_id: 1
+
+two:
+  name: MyString
+  description: MyText
+  completeness: 1.5
+  now: false
+  later: false
+  archived: false
+  user_id: 1

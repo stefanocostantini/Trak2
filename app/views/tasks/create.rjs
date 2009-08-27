@@ -1,0 +1,6 @@
+page.replace_html 'tasks_now_list', :partial => '/tasks/tasknow/', :collection => @tasks_now
+page.replace_html "task_now_counter", @tasks_now.size
+
+page[:task_name].clear
+
+page.visual_effect :pulsate, 'task_now_counter'

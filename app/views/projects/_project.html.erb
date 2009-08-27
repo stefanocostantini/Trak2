@@ -1,0 +1,12 @@
+<div class="project">
+
+	<% @project = project %>
+	
+	<span class="delete" style="border:none;"><%= link_to_remote image_tag('closebox.png', :border => 'none', :size => '25x25'), :url => { :controller => 'projects', :action => 'delete', :id => @project.id }, :loading => "Element.hide('firefox_fix')", :complete => "Element.show('firefox_fix')", :html => {:title => 'Delete project'} %></span>
+
+	<span class="project_name"><%= in_place_editor_field :project, :name %></span>
+	
+	<span class="project_colour" style="background-color:<%= @project.colour%>"></span>
+	
+
+</div>

@@ -1,0 +1,38 @@
+div.color_picker {
+  position: relative;
+  float: right;
+  top: 10px; 
+  right: 10px;
+  height: 45px;
+  width: 45px;
+  padding: 0 !important;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  cursor: pointer;
+  line-height: 45px;
+}
+
+div#color_selector {
+  position: absolute;
+  width: 120px;
+  margin-top: 5px;
+  margin-left: -85px;
+  border: 1px solid #000000;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: #dddddd;
+  padding: 2px;
+}
+  div#color_custom {width: 100%; float:left }
+  div#color_custom label {font-size: 95%; color: #2F2F2F; margin: 5px 2px; width: 25%}
+  div#color_custom input {margin: 5px 2px; padding: 0; font-size: 95%; border: 1px solid #000; width: 65%; text-align: center; }
+
+div.color_swatch {
+  height: 14px;
+  width: 14px;
+  border: 1px solid #000;
+  margin: 2px;
+  float: left;
+  cursor: pointer;
+  line-height: 12px;
+}

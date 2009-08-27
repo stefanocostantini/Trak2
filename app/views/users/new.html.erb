@@ -1,0 +1,28 @@
+	<div id="large_logo_for_signup">
+
+		<p id="trak_large"><%= image_tag 'trak_logo_large.png', :size => '179x67'%></p>
+		<p id="trak_strapline"><%= image_tag 'trak_strapline.png', :size => '140x14' %></p>
+
+
+	</div>
+
+
+	<div id="signup_form">
+
+		<% form_for :user, :url => users_path do |f| -%>	
+			
+			<p><label for="login">Login</label><br /><%= f.text_field :login %></p>
+
+			<p><label for="email">Email</label><br/><%= f.text_field :email %></p>
+
+			<p><label for="password">Password</label><br/><%= f.password_field :password %></p>
+
+			<p><label for="password_confirmation">Confirm</label><br/><%= f.password_field :password_confirmation %></p>
+
+			<p><%= submit_tag 'Sign up' %></p>
+			
+			<p class="form_close">Have an account? <%= link_to 'Login.', :controller => 'sessions', :action => 'new'%> </p>
+		
+		<% end -%>
+		
+	</div>

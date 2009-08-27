@@ -1,0 +1,4 @@
+page.replace_html 'tasks_archived_list', :partial => '/tasks/taskarchived/', :collection => @tasks_archived
+page.replace_html "task_archived_counter", @tasks_archived.size
+
+page.visual_effect :pulsate, 'task_archived_counter' 

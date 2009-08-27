@@ -1,0 +1,5 @@
+page.replace_html 'history_area', :partial => 'archive', :collection => @archives
+
+page.replace_html "archives_counter", @archives.size
+
+page.visual_effect :pulsate, 'archives_counter'

@@ -1,0 +1,17 @@
+<p>
+  <b>Name:</b>
+  <%=h @project.name %>
+</p>
+
+<p>
+  <b>Colour:</b>
+  <%=h @project.colour %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @project.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

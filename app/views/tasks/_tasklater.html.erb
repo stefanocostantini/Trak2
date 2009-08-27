@@ -1,0 +1,60 @@
+<% @task = tasklater %>
+<div class="task">
+
+<div id="left_task_column">
+
+	<span class="delete_task" style="border:none;"><%= link_to_remote image_tag('closebox.png', :border => 'none', :size => '25x25'), :url => { :controller => 'tasks', :action => 'delete_later', :id => @task.id }, :loading => "Element.hide('firefox_fix')", :complete => "Element.show('firefox_fix')", :html => {:title => 'Delete task'} %></span>
+	
+	<span class="task_name"><%= @task.name %></span>
+	
+	<% unless @task.project == nil %>
+	<span class="task_project" style="background-color:<%= @task.project.colour%>;"></span>
+	<% else %>
+	<span class="task_project" style="background-color:#999999;"></span>
+	<% end %>	
+	
+	<span class="task_description"><%= in_place_editor_field :task, :description %></span>
+	
+	<% unless @task.project == nil %>
+	<span class="triangle"><%= link_to_remote image_tag('tooltip.png', :border => 'none', :title => @task.project.name ), :url => {:controller => 'tasks', :action => 'tooltip'}%></span>
+	<% else %>
+	<span class="triangle"><%= link_to_remote image_tag('tooltip.png', :border => 'none', :title => 'No project associated to this task' ), :url => {:controller => 'tasks', :action => 'tooltip'}%></span>
+	<% end %>
+	
+	
+</div>
+
+<div id="right_task_column">
+
+	<span class="task_links">
+	
+		<p><%= link_to_remote 'Now', :url => { :controller => 'tasks', :action => 'set_to_now', :id => @task.id }, :loading => "Element.hide('firefox_fix')", :complete => "Element.show('firefox_fix')" %> </p>
+		<p class="inactive">Later</p>
+		<p><%= link_to_remote 'Done', :url => { :controller => 'tasks', :action => 'set_to_archived', :id => @task.id }, :loading => "Element.hide('firefox_fix')", :complete => "Element.show('firefox_fix')" %> </p>
+	
+	</span>
+		
+	<span class="task_completeness"><%= in_place_editor_field :task, :completeness %></span>
+
+</div>
+
+	
+	<% if @task.completeness == 0 %>
+	
+		<span class="task_status_red" id="task_status_<%=@task.id%>"></span>
+	
+	<% else %>
+	
+		<% if @task.completeness == 100 %>
+		
+			<span class="task_status_green" id="task_status_<%=@task.id%>"></span>
+		
+		<% else %>
+		
+			<span class="task_status_yellow" id="task_status_<%=@task.id%>"></span>
+			
+		<% end %>
+	
+	<% end %>
+
+</div>

@@ -1,0 +1,1 @@
+page.replace_html 'projects', :partial => 'project', :collection => @projects

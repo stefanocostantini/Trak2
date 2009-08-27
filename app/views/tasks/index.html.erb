@@ -1,0 +1,18 @@
+<div id="tasks_now" class="all_tasks">
+	
+	<h2 id="tasks_now_heading" class="task_heading"><%= link_to_function 'Now', update_page{ |page| page.visual_effect :toggle_blind, 'tasks_now_list', :duration => '0.3'} %></h2>
+	
+	<div id="tasks_now_list" class="tasks_list"> <%= render :partial => 'tasknow', :collection => @tasks_now %> </div>
+</div>
+
+<div id="tasks_later" class="all_tasks">
+
+	<h2 id="tasks_later_heading" class="task_heading"><%= link_to_function 'Later', update_page{ |page| page.visual_effect :toggle_blind, 'tasks_later_list', :duration => '0.3'} %></h2>
+	<div id="tasks_later_list" class="tasks_list"> <%= render :partial => 'tasklater', :collection => @tasks_later %> </div>
+	
+</div>
+
+
+
+
+

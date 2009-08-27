@@ -1,0 +1,27 @@
+<h2 class="task_heading">Projects</h2>
+
+<div id="new_project" style="display:none;">
+
+	<% remote_form_for(:project, :url => {:controller => 'projects', :action => 'create'}, :html => {:id => 'project_new'}, :loading => "Element.hide('firefox_fix')", :complete => "Element.show('firefox_fix')") do |f| %>
+
+ <p>
+    <%= f.text_field :name, :value => '' %>
+  </p>
+  <p>
+    <%= f.text_field :colour, :value => '#ff6600' %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+    
+<% end %>
+
+	<span id="close"><%= link_to_function 'Close', update_page{ |page| page.visual_effect :toggle_blind, 'new_project', :duration => '0.3'} %></span>
+
+</div>
+
+<div id="projects">
+
+<%= render :partial => 'project', :collection => @projects %>
+
+</div>

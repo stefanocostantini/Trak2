@@ -1,0 +1,20 @@
+<div id="archived_task">
+
+	<span id="archive_recycle">
+		<%= link_to_remote image_tag('recycle.png', :border => 'none', :size => '23x23'), :url => {:controller => 'archives', :action => 'recycle', :id => archive.id }, :loading => "Element.hide('firefox_fix')", :complete => "Element.show('firefox_fix')", :html => {:title => 'Recycle'} %> 	
+
+	</span>
+
+	<span id="archive_name">
+		<%= archive.name %>
+	</span>
+	
+	<span id="archive_date">
+		<%= simple_date (archive.updated_at) %>
+	</span>
+		
+	<span id="archive_links">
+		<%= link_to_remote 'Delete', :url => {:controller => 'archives', :action => 'delete', :id => archive.id }, :loading => "Element.hide('firefox_fix')", :complete => "Element.show('firefox_fix')", :html => {:title => 'Delete task'} %> 
+	</span>
+	
+</div>
