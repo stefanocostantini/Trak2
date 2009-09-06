@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
 
   # render new.rhtml
+  
+  def index 
+  	@users = User.all
+  end
+  
   def new
   end
 
