@@ -2,4 +2,13 @@
 
 <p><%= user.login %> | <%= user.created_at %></p>
 
+	<% @tasks = user.tasks.all %>
+	
+	<ul>
+	<% for task in @tasks %>
+	<li><%= task.name %></li>
+	<% end %>
+	</ul>
+	
+
 <% end %>
